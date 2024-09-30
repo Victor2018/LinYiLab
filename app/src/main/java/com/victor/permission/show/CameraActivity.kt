@@ -2,6 +2,7 @@ package com.victor.permission.show
 
 import android.content.Intent
 import android.os.Bundle
+import android.text.TextUtils
 import android.view.View
 import android.view.View.OnClickListener
 import androidx.appcompat.app.AppCompatActivity
@@ -41,6 +42,10 @@ class CameraActivity : BaseActivity(),OnClickListener {
         super.onActivityResult(requestCode, resultCode, data)
         //获取扫码结果
         val result = IntentIntegrator.parseActivityResult(requestCode, resultCode, data)
+        if (TextUtils.isEmpty(result.contents)) {
+            finish()
+            return
+        }
         mTvScanResult.text = result.contents
     }
 

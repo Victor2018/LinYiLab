@@ -59,7 +59,11 @@ object DeviceUtils {
                 Context.TELEPHONY_SERVICE) as TelephonyManager
 
             if (PermissionHelper.hasPermission(context,Manifest.permission.READ_PHONE_STATE)) {
-                deviceId = tm.deviceId
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                    deviceId = tm.getImei(0)
+                } else {
+                    deviceId = tm.deviceId
+                }
             } else {
                 Log.e(TAG,"getDeviceID()...not has READ_PHONE_STATE permission")
             }
