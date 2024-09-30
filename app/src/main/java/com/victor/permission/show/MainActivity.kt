@@ -371,6 +371,9 @@ class MainActivity : BaseActivity(),OnClickListener, EasyPermissions.PermissionC
             6 -> {//短信
                 requestPermissionReadSms()
             }
+            7 -> {//应用列表
+                AppResultActivity.intentStart(this)
+            }
         }
     }
 }

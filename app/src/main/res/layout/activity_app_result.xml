@@ -61,7 +61,7 @@
                         android:ellipsize="marquee"
                         android:maxEms="12"
                         android:singleLine="true"
-                        android:text="LB|联系人权限" />
+                        android:text="LB|已安装App" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -88,7 +88,7 @@
             android:layout_marginStart="@dimen/dp_20"
             android:textSize="@dimen/dp_56"
             android:textColor="@color/black"
-            android:text="正在获取联系人..."/>
+            android:text="正在获取已安装app..."/>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/mRvContact"

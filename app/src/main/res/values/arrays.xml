@@ -9,6 +9,7 @@
         <item>手机信息权限</item>
         <item>通话记录权限</item>
         <item>短信权限</item>
+        <item>应用列表</item>
     </string-array>
 
 </resources>
