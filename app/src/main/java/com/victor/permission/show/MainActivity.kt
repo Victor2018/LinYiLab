@@ -128,23 +128,6 @@ class MainActivity : BaseActivity(),OnClickListener, EasyPermissions.PermissionC
         }
     }
 
-    @AfterPermissionGranted(REQUEST_CODE_READ_PHONE_STATE_PERMISSION)
-    private fun requestPermissionReadPhoneState() {
-        if (hasReadPhoneStatePermission()) {
-            // Have permission, do things!
-//            showMessage(mRvPermission,"AfterPermissionGranted you have call log permission,you can get call log")
-            DeviceResultActivity.intentStart(this)
-        } else {
-            // Ask for one permission
-            EasyPermissions.requestPermissions(
-                this,
-                getString(R.string.permission_read_phone_state_rationale_message),
-                REQUEST_CODE_READ_PHONE_STATE_PERMISSION,
-                Manifest.permission.READ_PHONE_STATE
-            )
-        }
-    }
-
     @AfterPermissionGranted(REQUEST_CODE_CONTACTS_PERMISSION)
     private fun requestContactsPermission() {
         if (hasContactsPermissions()) {
@@ -187,9 +170,6 @@ class MainActivity : BaseActivity(),OnClickListener, EasyPermissions.PermissionC
     }
     private fun hasReadSmsPermission(): Boolean {
         return EasyPermissions.hasPermissions(this, Manifest.permission.READ_SMS)
-    }
-    private fun hasReadPhoneStatePermission(): Boolean {
-        return EasyPermissions.hasPermissions(this, Manifest.permission.READ_PHONE_STATE)
     }
 
     private fun hasLocationAndContactsPermissions(): Boolean {
@@ -356,9 +336,10 @@ class MainActivity : BaseActivity(),OnClickListener, EasyPermissions.PermissionC
                 requestContactsPermission()
             }
             2 -> {//文件权限
-                requestStoragePermission()
+//                requestStoragePermission()
+                FileResultActivity.intentStart(this)
             }
-            3 -> {//文件权限
+            3 -> {//相机权限
                 requestPermissionCamera()
             }
             4 -> {//手机信息

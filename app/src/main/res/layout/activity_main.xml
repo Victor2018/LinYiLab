@@ -12,7 +12,7 @@
         android:id="@+id/appbar_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/white"
+        android:background="@color/colorPrimary"
         android:fitsSystemWindows="true"
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
         app:elevation="0dp">
@@ -22,7 +22,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:fitsSystemWindows="true"
-            app:contentScrim="@color/white"
+            app:contentScrim="@color/colorPrimary"
             app:titleEnabled="false">
 
             <androidx.appcompat.widget.Toolbar
@@ -31,7 +31,7 @@
                 android:background="@color/transparent"
                 app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
                 app:title="@string/app_name"
-                app:titleTextColor="@color/black"
+                app:titleTextColor="@color/white"
                 app:contentInsetStart="0dp"/>
 
         </com.google.android.material.appbar.CollapsingToolbarLayout>
@@ -52,7 +52,7 @@
             android:id="@+id/mTvTip"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/dp_10"
+            android:layout_marginTop="@dimen/dp_30"
             android:gravity="center"
             android:textSize="@dimen/dp_56"
             android:textColor="@color/black"
@@ -73,12 +73,12 @@
             android:id="@+id/mTvBack"
             android:layout_width="wrap_content"
             android:layout_height="@dimen/dp_80"
-            android:background="@drawable/shape_white_radius_40"
+            android:background="@drawable/shape_eb4f3a_radius_40"
             android:paddingStart="@dimen/dp_60"
             android:paddingEnd="@dimen/dp_60"
             android:gravity="center"
             android:textSize="@dimen/dp_36"
-            android:textColor="@color/black"
+            android:textColor="@color/white"
             android:text="返回"/>
 
     </LinearLayout>

@@ -7,7 +7,10 @@
     android:layout_width="match_parent"
     android:layout_height="@dimen/dp_300"
     android:layout_margin="@dimen/dp_5"
-    android:background="@color/color_CCCCCC"
+    android:background="@color/color_33EB4F3A"
+    android:elevation="@dimen/dp_5"
+    android:outlineAmbientShadowColor="@color/color_1A000000"
+    android:outlineSpotShadowColor="@color/color_1A000000"
     tools:context=".CameraActivity">
 
     <TextView

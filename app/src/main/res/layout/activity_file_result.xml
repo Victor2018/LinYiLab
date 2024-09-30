@@ -61,7 +61,7 @@
                         android:ellipsize="marquee"
                         android:maxEms="12"
                         android:singleLine="true"
-                        android:text="LB|通话记录权限" />
+                        android:text="LB|文件权限" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -88,10 +88,10 @@
             android:layout_marginStart="@dimen/dp_20"
             android:textSize="@dimen/dp_56"
             android:textColor="@color/black"
-            android:text="正在获取通话记录..."/>
+            android:text="正在获取文件..."/>
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/mRvCallLog"
+            android:id="@+id/mRvFile"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"

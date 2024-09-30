@@ -45,6 +45,9 @@
             android:exported="false"
             android:theme="@style/AppTheme.FullScreen"/>
         <activity
+            android:name=".FileResultActivity"
+            android:exported="false"/>
+        <activity
             android:name=".AppResultActivity"
             android:exported="false"/>
         <activity
