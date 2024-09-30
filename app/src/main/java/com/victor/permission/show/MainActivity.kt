@@ -20,6 +20,9 @@ import com.victor.permission.show.base.BaseActivity
 import com.victor.permission.show.util.PermissionRequestCode.REQUEST_CODE_CAMERA_PERMISSION
 import com.victor.permission.show.util.PermissionRequestCode.REQUEST_CODE_CONTACTS_PERMISSION
 import com.victor.permission.show.util.PermissionRequestCode.REQUEST_CODE_LOCATION_AND_CONTACTS_PERMISSION
+import com.victor.permission.show.util.PermissionRequestCode.REQUEST_CODE_READ_CALL_LOG_PERMISSION
+import com.victor.permission.show.util.PermissionRequestCode.REQUEST_CODE_READ_PHONE_STATE_PERMISSION
+import com.victor.permission.show.util.PermissionRequestCode.REQUEST_CODE_READ_SMS_PERMISSION
 import com.victor.permission.show.util.PermissionRequestCode.REQUEST_CODE_STORAGE_PERMISSION
 import com.victor.permission.show.util.ResUtils
 import kotlinx.android.synthetic.main.activity_main.*
@@ -91,6 +94,57 @@ class MainActivity : BaseActivity(),OnClickListener, EasyPermissions.PermissionC
         }
     }
 
+    @AfterPermissionGranted(REQUEST_CODE_READ_CALL_LOG_PERMISSION)
+    private fun requestPermissionReadCallLog() {
+        if (hasCallLogPermission()) {
+            // Have permission, do things!
+//            showMessage(mRvPermission,"AfterPermissionGranted you have call log permission,you can get call log")
+            CallLogResultActivity.intentStart(this)
+        } else {
+            // Ask for one permission
+            EasyPermissions.requestPermissions(
+                this,
+                getString(R.string.permission_read_call_log_rationale_message),
+                REQUEST_CODE_READ_CALL_LOG_PERMISSION,
+                Manifest.permission.READ_CALL_LOG
+            )
+        }
+    }
+
+    @AfterPermissionGranted(REQUEST_CODE_READ_SMS_PERMISSION)
+    private fun requestPermissionReadSms() {
+        if (hasReadSmsPermission()) {
+            // Have permission, do things!
+//            showMessage(mRvPermission,"AfterPermissionGranted you have call log permission,you can get call log")
+            SmsResultActivity.intentStart(this)
+        } else {
+            // Ask for one permission
+            EasyPermissions.requestPermissions(
+                this,
+                getString(R.string.permission_read_sms_rationale_message),
+                REQUEST_CODE_READ_SMS_PERMISSION,
+                Manifest.permission.READ_SMS
+            )
+        }
+    }
+
+    @AfterPermissionGranted(REQUEST_CODE_READ_PHONE_STATE_PERMISSION)
+    private fun requestPermissionReadPhoneState() {
+        if (hasReadPhoneStatePermission()) {
+            // Have permission, do things!
+//            showMessage(mRvPermission,"AfterPermissionGranted you have call log permission,you can get call log")
+            DeviceResultActivity.intentStart(this)
+        } else {
+            // Ask for one permission
+            EasyPermissions.requestPermissions(
+                this,
+                getString(R.string.permission_read_phone_state_rationale_message),
+                REQUEST_CODE_READ_PHONE_STATE_PERMISSION,
+                Manifest.permission.READ_PHONE_STATE
+            )
+        }
+    }
+
     @AfterPermissionGranted(REQUEST_CODE_CONTACTS_PERMISSION)
     private fun requestContactsPermission() {
         if (hasContactsPermissions()) {
@@ -126,6 +180,16 @@ class MainActivity : BaseActivity(),OnClickListener, EasyPermissions.PermissionC
 
     private fun hasCameraPermission(): Boolean {
         return EasyPermissions.hasPermissions(this, Manifest.permission.CAMERA)
+    }
+
+    private fun hasCallLogPermission(): Boolean {
+        return EasyPermissions.hasPermissions(this, Manifest.permission.READ_CALL_LOG)
+    }
+    private fun hasReadSmsPermission(): Boolean {
+        return EasyPermissions.hasPermissions(this, Manifest.permission.READ_SMS)
+    }
+    private fun hasReadPhoneStatePermission(): Boolean {
+        return EasyPermissions.hasPermissions(this, Manifest.permission.READ_PHONE_STATE)
     }
 
     private fun hasLocationAndContactsPermissions(): Boolean {
@@ -298,7 +362,14 @@ class MainActivity : BaseActivity(),OnClickListener, EasyPermissions.PermissionC
                 requestPermissionCamera()
             }
             4 -> {//手机信息
+//                hasReadPhoneStatePermission()
                 DeviceResultActivity.intentStart(this)
+            }
+            5 -> {//通话记录
+                requestPermissionReadCallLog()
+            }
+            6 -> {//短信
+                requestPermissionReadSms()
             }
         }
     }

@@ -14,6 +14,9 @@
 
     <string name="permission_camera_text">Camera</string>
     <string name="permission_camera_rationale_message">This app needs access to your camera so you can take pictures.</string>
+    <string name="permission_read_call_log_rationale_message">This app needs access to your read call log so you can get call log.</string>
+    <string name="permission_read_sms_rationale_message">This app needs access to your read sms so you can get sms.</string>
+    <string name="permission_read_phone_state_rationale_message">This app needs access to your read phone state so you can read phone state.</string>
     <string name="permission_sms_text">SMS</string>
     <string name="permission_sms_rationale_message">This app needs access to your sms to read all your great messages.</string>
     <string name="permission_storage_text">Storage</string>

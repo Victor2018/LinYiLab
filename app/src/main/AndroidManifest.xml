@@ -4,7 +4,8 @@
 
     <uses-feature
         android:name="android.hardware.camera"
-        android:required="false" /> <!-- storage permission start -->
+        android:required="false" />
+    <!-- storage permission start -->
     <uses-permission
         android:name="android.permission.READ_EXTERNAL_STORAGE"
         android:maxSdkVersion="32" />
@@ -16,11 +17,15 @@
         android:maxSdkVersion="32" />
     <uses-permission android:name="android.permission.READ_MEDIA_IMAGES" />
     <uses-permission android:name="android.permission.READ_MEDIA_AUDIO" />
-    <uses-permission android:name="android.permission.READ_MEDIA_VIDEO" /> <!-- storage permission end -->
+    <uses-permission android:name="android.permission.READ_MEDIA_VIDEO" />
+    <!-- storage permission end -->
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.FLASHLIGHT" />
     <uses-permission android:name="android.permission.READ_CONTACTS" />
-    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.READ_CALL_LOG" />
+    <uses-permission android:name="android.permission.READ_SMS"
+        tools:ignore="PermissionImpliesUnsupportedChromeOsHardware" />
 
     <application
         android:name=".app.App"
@@ -37,6 +42,12 @@
             android:name=".CaptureActivity"
             android:exported="false"
             android:theme="@style/AppTheme.FullScreen"/>
+        <activity
+            android:name=".CallLogResultActivity"
+            android:exported="false"/>
+        <activity
+            android:name=".SmsResultActivity"
+            android:exported="false"/>
         <activity
             android:name=".DeviceResultActivity"
             android:exported="false" />

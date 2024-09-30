@@ -1,11 +1,14 @@
 package com.victor.permission.show.util
 
 import android.Manifest
+import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.Context
 import android.content.pm.PackageManager
 import android.os.Build
 import android.provider.Settings
+import android.telephony.TelephonyManager
+import android.text.TextUtils
 import android.util.Log
 import androidx.core.app.ActivityCompat
 import java.io.BufferedReader
@@ -33,6 +36,39 @@ import kotlin.experimental.and
 
 object DeviceUtils {
     const val TAG = "DeviceUtils"
+
+    fun getUDID(context: Context?): String {
+        var udid: String = getDeviceID(context)
+
+        if (TextUtils.isEmpty(udid)) {
+            udid = getAndroidID(context)
+        }
+        if (TextUtils.isEmpty(udid)) {
+            udid = getDeviceUUID()
+        }
+        var udidMd5Str = CryptoUtils.MD5(udid)
+        Log.e(TAG,"getUDID()...udidMd5Str = $udidMd5Str")
+        return udidMd5Str ?: ""
+    }
+
+    @SuppressLint("MissingPermission")
+    fun getDeviceID (context: Context?): String {
+        var deviceId = "unknown"
+        try {
+            val tm = context?.applicationContext?.getSystemService(
+                Context.TELEPHONY_SERVICE) as TelephonyManager
+
+            if (PermissionHelper.hasPermission(context,Manifest.permission.READ_PHONE_STATE)) {
+                deviceId = tm.deviceId
+            } else {
+                Log.e(TAG,"getDeviceID()...not has READ_PHONE_STATE permission")
+            }
+        } catch (e: Exception) {
+            e.printStackTrace()
+        }
+        Log.e(TAG,"getDeviceID()...deviceId = $deviceId")
+        return deviceId
+    }
 
     fun getAndroidID (context: Context?): String {
         var androidId = ""

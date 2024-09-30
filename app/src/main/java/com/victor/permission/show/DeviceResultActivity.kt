@@ -35,7 +35,7 @@ class DeviceResultActivity : BaseActivity(),OnItemClickListener,OnClickListener 
 
     fun initData() {
         var sb = StringBuffer()
-        sb.append("IMEI:unknown\n")
+        sb.append("IMEI:${DeviceUtils.getDeviceID(this)}\n")
         sb.append("S/N:${DeviceUtils.getSerialNumber()}\n")
         sb.append("OsVersion:Android ${DeviceUtils.getSysVersion()}\n")
         sb.append("BuildVersion: ${DeviceUtils.getBuildNumber()}\n")

@@ -7,6 +7,8 @@
         <item>文件权限</item>
         <item>二维码扫描</item>
         <item>手机信息权限</item>
+        <item>通话记录权限</item>
+        <item>短信权限</item>
     </string-array>
 
 </resources>
